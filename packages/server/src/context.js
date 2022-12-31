@@ -63,6 +63,27 @@ class Context {
 
     return device;
   }
+
+  /**
+   * @param {string} name 
+   * @returns {ScanDevice}
+   */
+  getDeviceByName(name) {
+    if (this.devices === undefined || this.devices.length === 0) {
+      throw 'No devices found';
+    }
+
+    if (name === undefined) {
+      return this.devices[0];
+    }
+
+    const device = this.devices.filter(device => device.name === name)[0];
+    if (device === undefined) {
+      throw `Device ${name} not found`;
+    }
+
+    return device;
+  }
 }
 
 module.exports = Context;

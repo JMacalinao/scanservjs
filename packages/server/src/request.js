@@ -20,12 +20,13 @@ class Request {
    * @returns {ScanRequest}
    */
   extend(data) {
-    const device = this.context.getDevice(data.params.deviceId);
+    const device = this.context.getDeviceByName(data.params.deviceName);
 
     const features = device.features;
     extend(this, {
       params: {
         deviceId: device.id,
+        deviceName: device.name,
         resolution: data.params.resolution || features['--resolution'].default,
         format: 'tiff',
         isPreview: data.params.isPreview || false

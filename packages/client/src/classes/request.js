@@ -16,6 +16,7 @@ export default class Request {
       version: Constants.Version,
       params: {
         deviceId: device.id,
+        deviceName: device.name,
         resolution: request.params.resolution || device.features['--resolution'].default
       },
       filters: request.filters || [],
